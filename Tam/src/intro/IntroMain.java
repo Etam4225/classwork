@@ -7,7 +7,7 @@ public class IntroMain {
 	//this is a constant, they can be public
 	public static final String[] DESCRIPTIONS = {" is a teacher at BTHS", " is a student at BTHS", " teaches java"};
 	
-	
+	 
 	//this is the first method executed -> static because it is independent of instances
 	public static void main(String[] args) {
 		//this is the declaration of an instance of CodingConventions
