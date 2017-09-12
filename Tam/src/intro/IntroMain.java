@@ -14,7 +14,7 @@ public class IntroMain {
 		//in the same line of code, it is also being instantiated (initiating/ assigning a value)
 		//note the use of the word "new" -> this word is always used when calling constructors
 		
-		
+		 
 		int numberOfPeople = 12;
 		for(int i = 0; i < numberOfPeople; i++) {
 			CodingConventions conventionsInstance = new CodingConventions("Mr.Nockles", i%3);
