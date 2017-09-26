@@ -18,7 +18,7 @@ public class Student implements Attendee {
 	}
 
 	public void setPresent(boolean present) {
-		
+		 
 	}
 
 	public String getFirstName() {
