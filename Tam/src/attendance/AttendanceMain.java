@@ -1,4 +1,4 @@
-Apackage attendance;
+package attendance;
 
 import java.util.Scanner;
 
