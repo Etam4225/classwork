@@ -4,7 +4,7 @@ public class Student implements Attendee {
 
 	private String first;
 	private String last;
-	private String studentPresent;
+	private static String studentPresent;
 	public Student (String firstName, String lastName) {
 		this.first = firstName;
 		this.last = lastName;
