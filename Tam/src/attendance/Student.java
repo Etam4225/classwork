@@ -24,45 +24,46 @@ public class Student implements Attendee {
 	}
 
 	public String getFirstName() {
-		return this.first;
+		return first;
 	}
 
 	public String getLastName() {
-		return this.last;
+		return last;
 	}
 
 	
 	public boolean mathces(String first, String last) {
-		if(this.getFirstName().compareTo(first) == 0 && this.getLastName().compareTo(last) == 0) {
+		if(getFirstName().toLowerCase().compareTo(first.toLowerCase()) == 0 && getLastName().toLowerCase().compareTo(last.toLowerCase()) == 0) {
 			return true;
 		}
 		return false;
 	}
 
 	public boolean matches(String last) {
-		if(this.getLastName().compareTo(last) == 0)
+		if(getLastName().toLowerCase().compareTo(last.toLowerCase()) == 0)
 		{
 			return true;
+			//you can use .equals to compare
 		}
 		return false;
 	}
-
+ 
 	public String getReportString() {
-		String s = "";
-		while(this.last.length() < 20)
+		String finalString = last;
+		while(finalString.length() < 20)
 		{
-			this.last += "";
+			finalString += " ";
 		}
-		s = this.last + this.first;
-		while(s.length() < 40)
+		finalString = finalString + first;
+		while(finalString.length() < 40)
 		{
-			s += "";
+			finalString += " ";
 		}
 		if(this.isPresent())
 		{
-			return s += "Present";
+			return finalString += "Present";
 		}
-		return s += "Absent";
+		return finalString += "Absent";
 	
 	}
 
