@@ -22,7 +22,7 @@ public class Student implements Attendee {
 		this.studentPresent = true;
 		 
 	}
-
+ 
 	public String getFirstName() {
 		return first;
 	}
