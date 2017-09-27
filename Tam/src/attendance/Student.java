@@ -48,16 +48,22 @@ public class Student implements Attendee {
 	}
 
 	public String getReportString() {
-		while(this.first.length() < 20)
-		{
-			this.first += "";
-		}
-		this.last = this.first + this.last;
-		while(this.last.length() < 40)
+		String s = "";
+		while(this.last.length() < 20)
 		{
 			this.last += "";
 		}
-		return this.last;
+		s = this.last + this.first;
+		while(s.length() < 40)
+		{
+			s += "";
+		}
+		if(this.isPresent())
+		{
+			return s += "Present";
+		}
+		return s += "Absent";
+	
 	}
 
 }
