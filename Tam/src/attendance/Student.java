@@ -48,6 +48,21 @@ public class Student implements Attendee {
 	}
  
 	public String getReportString() {
+		String myString = last;
+		String myString1 = first;
+		while(myString.length() > 17 )
+		{
+			//remove 3 letters and stuff
+			myString = myString.substring(0, myString.length() -3 );
+			
+			last = myString + "...";
+		}
+		while(myString1.length() > 17 )
+		{
+			myString1 = myString1.substring(0, myString1.length() -3 );
+			
+			first = myString1 + "...";
+		}
 		String finalString = last;
 		while(finalString.length() < 20)
 		{
