@@ -20,7 +20,7 @@ public class Student implements Attendee {
 
 	public void setPresent(boolean present) {
 		this.studentPresent = true;
-		 
+		  
 	}
 	public String getFirstName() {
 		return first;
