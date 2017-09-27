@@ -5,7 +5,7 @@ public class Student implements Attendee {
 	private String first;
 	private String last;
 	private boolean studentPresent = false;
-	public Student (String firstName, String lastName) {
+	public Student (String firstName, String lastName) { 
 		this.first = firstName;
 		this.last = lastName;
 	}
