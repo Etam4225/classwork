@@ -39,6 +39,7 @@ public class ChatbotMain {
 		return true;
 	}
 
+	//return true if there is not "not" in front of the keyword. 
 	public static boolean noNegations(String s, int psn){
 		return true;
 	}
@@ -54,7 +55,7 @@ public class ChatbotMain {
 
 	public static void multiLinePrint(String s){
 		String printString = "";
-		int cutoff = 25;
+		int cutoff = 55;
 		//this while loop last as long as there are words left in the original String
 		while(s.length() > 0){
 
