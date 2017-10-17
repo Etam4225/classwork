@@ -8,6 +8,119 @@ public class ArraysMain {
 	private String[] values;
 	
 	public ArraysMain() {
+		tuesdayMethods();
+		//System.out.println(Arrays.toString(testArray));
+	}
+	
+	private void tuesdayMethods() {
+		int[] orderTest = {1,2,3,4,5,6,7,8,9,3,7,8,11,10,1,2,3,4,5,6,7,8,9,10,11};
+		//cycleThrough(orderTest, 5);
+		int thing = longestConsecSequence(orderTest);
+		System.out.println(thing);
+		System.out.println(Arrays.toString((orderTest)));
+	}
+	
+	/**
+	 * return length of the longest cons. seqence in the array
+	 * EX: lCS({1,2,3,2,3,4,5,2,3,4}) -> 4
+	 * LCS({16,17,18,19,2,5,6,7,8,9,10}) -> 6
+	 */
+	private int longestConsecSequence(int[] arr) {
+		int myCount = 1;
+		int tempCount = 1;
+		for(int i = 0; i < arr.length-1; i++) {
+			if(arr[i]+1 == arr[i+1]){
+				tempCount++;
+			}else {
+				tempCount = 1;
+			}
+			if(tempCount > myCount) {
+				myCount = tempCount;
+			}
+		}
+		return myCount; 
+		/* for(int i = 0; i < arr.length; i++) {
+				while(i + tempCount < arr.length && isConsecutive(arr, i, i + tempCount)) {
+					tempCount++;
+				}
+				if(tempCount > myCount) {
+					myCount = tempCount;				
+				}
+				i  = i + tempCount - 1; //saves time
+				tempCount = 1;
+		 }
+		 return myCount; NOCKLES WAY*/
+				
+	}
+	
+	//private void resetCount
+	/** 
+	 * returns true if all elements start to end are increasing by 1
+	 * @param arr
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	private boolean isConsecutive(int[] arr, int start, int end) {
+		for(int i = start; i < end; i++) {
+			if(arr[i]+1 != arr[i+1]) {
+				return false;
+			}
+		}
+		return true;
+		
+	}
+	/**
+	 * The element at index 0 moves to the last position in the array as all
+	 * other elements move forward. This must happen n times
+	 * @param orderTest
+	 */
+	private void cycleThrough(int[] arr, int n) {
+		int i = 0;
+		while(i < n) {
+			frontToBack(arr);
+			i++;
+		}
+	}
+
+	/**
+	 * removes the element at index 0, pushes all other elements forward
+	 * 1 goes to 0, 2 goes to 1, ...
+	 * puts the element @ idx 0 at the end;
+	 * @param arr
+	 * @return
+	 */
+	private void frontToBack(int[] arr) {	
+		int tempfirstElement = arr[0];
+		for(int i = 0; i < arr.length-1; i++) {
+			arr[i] = arr[i+1]; 
+		}
+		arr[arr.length-1] = tempfirstElement;
+		
+	}
+
+	public void reverseOrder(int[] arr) {
+		for(int i = 0; i < arr.length/2; i++) {
+			swap(arr, i , arr.length-1-i);
+		}
+	}
+	
+	
+	private void warmUpMethods() {
+		int[] orderTest = {1,2,3,4,5,6,7,8,9,10};
+		reverseOrder(orderTest);
+		System.out.println(Arrays.toString(orderTest));
+		System.out.println(Arrays.toString(subArray(orderTest,3,4)));
+	}
+	private int[] subArray(int[] arr, int start, int length) {
+		int[] myArray = new int[length];
+		for(int i = 0; i < length; i++) {
+			myArray[i] = arr[i+start];
+		}
+		return myArray;
+	}
+
+	public void cardMethods() {
 		suits = new String[4];
 		suits[0] = "Clubs";
 		suits[1] = "Hearts";
@@ -22,7 +135,7 @@ public class ArraysMain {
 		values[11] = "Queen";
 		values[10] = "Jack";
 		printDeck();
-		//System.out.println(Arrays.toString(testArray));
+		
 	}
 	private String[] printDeck() {
 		String[] deck = new String[52];
