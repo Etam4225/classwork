@@ -8,10 +8,51 @@ public class ArraysMain {
 	private String[] values;
 	
 	public ArraysMain() {
-		tuesdayMethods();
+		wednesdayMethods();
 		//System.out.println(Arrays.toString(testArray));
 	}
 	
+	private void wednesdayMethods() {
+		int[] diceRolls = new int[10000000];
+		populate(diceRolls);
+		int[] data = longestConsecutiveSeqAndIndex(diceRolls);
+		int longest = data[0];
+		System.out.println("The longest sequence is " + longest + " rolls." +
+		" It happened on roll #" + data[1] + " the sequence was: " +
+		Arrays.toString(subArray(diceRolls, data[1], data[0])) + ".");
+		
+	}
+
+	/**
+	 * BIG IDEA: 
+	 * Usually a method returns ONE piece of data (i.e. 'int', 'boolean', etc)
+	 * IF we ever want more than one piece of data, one way of doing that
+	 * is by using an array, as you see here, a method that returns
+	 * the LENGTH of the sequence and its START position (both INTS)
+	 * @param arr
+	 * @return
+	 */
+	private int[] longestConsecutiveSeqAndIndex(int[] arr) {
+		//use an int[] to store the data
+		int[] data = new int[2];// element at zero is length
+		
+		data[0] = 1;
+		int tempCount = 1;
+		for(int i = 0; i < arr.length; i++) {
+			while(i + tempCount < arr.length && isConsecutive(arr, i, i + tempCount)) {
+				tempCount++;
+			}
+			if(tempCount > data[0]) {
+				data[0] = tempCount;		
+				//also store the index where this sequence started
+				data[1] = i;
+			}
+			i  = i + tempCount - 1; //saves time
+			tempCount = 1;
+	 }
+	 return data;
+	}
+
 	private void tuesdayMethods() {
 		int[] orderTest = {1,2,3,4,5,6,7,8,9,3,7,8,11,10,1,2,3,4,5,6,7,8,9,10,11};
 		//cycleThrough(orderTest, 5);
@@ -21,14 +62,14 @@ public class ArraysMain {
 	}
 	
 	/**
-	 * return length of the longest cons. seqence in the array
+	 * return length of the longest cons. sequence in the array
 	 * EX: lCS({1,2,3,2,3,4,5,2,3,4}) -> 4
 	 * LCS({16,17,18,19,2,5,6,7,8,9,10}) -> 6
 	 */
 	private int longestConsecSequence(int[] arr) {
 		int myCount = 1;
 		int tempCount = 1;
-		for(int i = 0; i < arr.length-1; i++) {
+		/*for(int i = 0; i < arr.length-1; i++) {
 			if(arr[i]+1 == arr[i+1]){
 				tempCount++;
 			}else {
@@ -38,8 +79,8 @@ public class ArraysMain {
 				myCount = tempCount;
 			}
 		}
-		return myCount; 
-		/* for(int i = 0; i < arr.length; i++) {
+		return myCount; my way */
+		for(int i = 0; i < arr.length; i++) {
 				while(i + tempCount < arr.length && isConsecutive(arr, i, i + tempCount)) {
 					tempCount++;
 				}
@@ -49,7 +90,7 @@ public class ArraysMain {
 				i  = i + tempCount - 1; //saves time
 				tempCount = 1;
 		 }
-		 return myCount; NOCKLES WAY*/
+		 return myCount; /* NOCKLES WAY*/
 				
 	}
 	
