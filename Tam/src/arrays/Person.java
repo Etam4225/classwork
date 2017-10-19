@@ -12,10 +12,41 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private Borough home;
+	private Hobby hobby;
+	private Person[] friends;
 	public Person(String firstName, String lastName, Borough home) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.home = home;
+		friends = new Person[3];
+		hobby = Hobby.randomHobby();
+	}
+	
+	public void stateYourFriends() {
+		String friendsList = "My friend(s) is/are ";
+		for(int i = 0; i < friends.length-1; i++ ) {
+			friendsList += friends[i].firstName + ", ";
+		}
+		friendsList += "and " +friends[friends.length-1].firstName+ ".";
+		System.out.println(friendsList);
+	}
+	
+	public void mingle(Person[] peers) {
+		for(Person p: peers) {
+			//can't friend yourself
+			if(p != this) {
+				setInFirstPlace(p);
+			}
+		}
+	}
+	
+	public void setInFirstPlace(Person f) {
+		//go backward through an array
+		for(int i = friends.length - 1; i > 0; i--) {
+			//move the friend from in front, back
+			friends[i] = friends[i-1]; //Check: wont go out of bounds
+		}
+		friends[0] = f;
 	}
 	
 	public String toString() {
