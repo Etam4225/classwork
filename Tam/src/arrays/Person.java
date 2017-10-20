@@ -14,14 +14,66 @@ public class Person {
 	private Borough home;
 	private Hobby hobby;
 	private Person[] friends;
+	private String nickname;
+	
 	public Person(String firstName, String lastName, Borough home) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.home = home;
 		friends = new Person[3];
 		hobby = Hobby.randomHobby();
+		nickname = createNickname(firstName);
 	}
 	
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	/**
+	 * PASS BY VALUE
+	 * The Parameters of a method contain only values, not references
+	 * therefore, when they are changed, the REFERENCE to the original
+	 * object does not change
+	 *  
+	 * 
+	 * returns a String equal to name of the index of(but not including)\
+	 * the 2nd voewl
+	 * createNickname("Jonathan") -> "jon"
+	 * @param name
+	 * @return
+	 */
+	public static String createNickname(String name) {
+		String nnString = "";
+		int vowelCounter = 0;
+		for(int i = 0; i < name.length(); i++) {
+			String letter = name.substring(i,i+1);
+			if(foundVowel(letter)) {
+				vowelCounter++;
+				if(vowelCounter !=2) {
+					nnString += letter;
+				}else {
+					return nnString;
+				}
+			}else {
+				nnString += letter;
+			}
+		}
+		return name;
+	}
+	
+	private static boolean foundVowel(String letter) {
+		if(letter.equals("a") || letter.equals("e") || letter.equals("i") || letter.equals("o") || letter.equals("u")) {
+			return true;
+		}
+		return false;
+	}
 	public void stateYourFriends() {
 		String friendsList = "My friend(s) is/are ";
 		for(int i = 0; i < friends.length-1; i++ ) {
@@ -50,7 +102,7 @@ public class Person {
 	}
 	
 	public String toString() {
-		return "My name is "+ firstName + " "+ lastName+ " and I am from " +
+		return "My name is "+ firstName + " "+ lastName+ ". Call me " + nickname + ". I am from " +
 	 home + ".";
 	}
 }
