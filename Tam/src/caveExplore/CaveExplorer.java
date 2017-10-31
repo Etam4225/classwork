@@ -11,7 +11,7 @@ public class CaveExplorer {
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
-		CaveRoom.setUpCaves();
+		CaveRoom.setUpCaves();//creates caves and starting room
 		inventory = new Inventory();
 		startExploring();
 		
