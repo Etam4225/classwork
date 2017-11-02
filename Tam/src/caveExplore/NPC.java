@@ -3,12 +3,12 @@ package caveExplore;
 public class NPC {
 
 	//fields needed to program navigation
-	private CaveRoom[][] floor; //AREA WHERE NPC ROAMS
+	private CaveRoom[][] floor;//area where NPC roams
 	private int currentRow;
 	private int currentCol;
 	private NPCRoom currentRoom;
 	
-	//These fields are about interaction with the NPC
+	//these fields are about interaction with NPC
 	private boolean active;
 	private String activeDescription;
 	private String inactiveDescription;
@@ -20,9 +20,9 @@ public class NPC {
 		this.activeDescription = "There is a person standing in the room,"
 				+ " waiting to talk to you. Press 'e' to talk.";
 		this.inactiveDescription = "The person you spoke to earlier is "
-				+ "standing here";
-		//by default, NPC does not have a position,
-		//to indicate this, use coordinates -1,-1
+				+ "standing here.";
+		//by default, NPC does not have a position, 
+		//to indicate this, use coordinates -1, -1
 		this.currentCol = -1;
 		this.currentRow = -1;
 		currentRoom = null;
@@ -40,8 +40,8 @@ public class NPC {
 			CaveExplorer.print("Yeah... I don't do a whole lot.");
 			s = CaveExplorer.in.nextLine();
 		}
-		CaveExplorer.print("later, friend!");
-		active = false;	
+		CaveExplorer.print("Later, friend!");
+		active = false;
 	}
 
 	public String getDescription() {
@@ -53,20 +53,21 @@ public class NPC {
 	}
 
 	public String getSymbol() {
-		return "P"; //person
+		return "P";
 	}
 
 	public void setPosition(int row, int col) {
-		//avoid AIOOBE
-		if(row >= col && row < floor.length &&  col >= 0 && col < floor[row].length
-				&& floor[row][col] instanceof NPCRoom) {
+		//check to avoid ArayIndexOutOfBoundsException
+		if(row >= 0 && row < floor.length && col >= 0 
+				&& col < floor[row].length && floor[row][col] instanceof NPCRoom
+				) {
 			if(currentRoom != null) {
 				currentRoom.leaveNPC();
 			}
 			
 			currentRow = row;
 			currentCol = col;
-			//cast the CacveRoom
+			//cast the CaveRoom to NPCRoom
 			currentRoom = (NPCRoom)floor[row][col];
 			currentRoom.enterNPC(this);
 		}
@@ -82,17 +83,32 @@ public class NPC {
 	}
 
 	private int[] calculateMove() {
-		int[][] possibleMoves = {{-1,0},{0,1}, {1,0}, {0,-1}};
+		int[][] possibleMoves = {{-1,0},{0,1},{1,0},{0,-1}};
 		int index = (int)(Math.random() * possibleMoves.length);
 		int[] newPosition = new int[2];
 		newPosition[0] = currentRow + possibleMoves[index][0];
-		newPosition[1] = possibleMoves[index][1];
-		while(currentRoom.getDoor(index) == null || !(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom)) {
+		newPosition[1] = currentCol + possibleMoves[index][1];
+		while(currentRoom.getDoor(index) == null ||
+				!(CaveExplorer.caves[newPosition[0]][newPosition[1]] 
+						instanceof NPCRoom)) {
 			index = (int)(Math.random() * possibleMoves.length);
 			newPosition[0] = currentRow + possibleMoves[index][0];
-			newPosition[1] = possibleMoves[index][1];
+			newPosition[1] = currentCol + possibleMoves[index][1];
 		}
 		return newPosition;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

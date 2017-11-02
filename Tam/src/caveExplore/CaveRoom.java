@@ -72,7 +72,7 @@ public class CaveRoom {
 		return direction[dir];
 	}
 	
-
+	
 	
 	public void enter() {
 		contents = "X";
@@ -159,6 +159,7 @@ public class CaveRoom {
 			}
 		}
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
+		c[1][3] = new VaultRoom("This room is a vault at 1,3");
 		NPC testNPC = new NPC();
 		testNPC.setPosition(1,1);
 		
@@ -172,6 +173,7 @@ public class CaveRoom {
 		//5. Set up doors
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
+		c[1][2].setConnection(EAST, c[1][3], new Door());
 		
 		/*CaveRoom[][][] layers = new CaveRoom[3][][];
 		layers[0] = new CaveRoom[3][4];*/
