@@ -6,7 +6,8 @@ public class Environment {
 	private int growthRate;
 	
 	public Environment(int plants) {
-		// TODO Auto-generated constructor stub
+		this.plants = plants;
+		this.growthRate = plants/2;
 	}
 
 	public static void main(String[] args) {
@@ -18,8 +19,21 @@ public class Environment {
 	}
 
 	private void growPlants() {
-		// TODO Auto-generated method stub
+		plants+= growthRate;
+		System.out.println("\nThere are "+plants+" plants.");
 		
 	}
 
+	public boolean eatPlants() {
+		if(plants > 0) {
+			plants--;
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "An vast field";
+	}
 }

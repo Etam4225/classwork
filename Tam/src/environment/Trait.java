@@ -1,7 +1,7 @@
 package environment;
 
 public class Trait {
-	public static final String[] traits = {"striped", "long-tailed", "furry", "short-eared",
+	public static final String[] traits = {"striped", "long-tailed", "furry", "brown", "short-eared",
 			"spotted", "short-tailed", "hairless", "white", "long-eared"};
 	private String description;
 	private int index;
@@ -27,10 +27,8 @@ public class Trait {
 
 	@Override
 	public String toString() {
-		return "Trait []";
+		return description;
 	}
-
-
 
 	public int getIndex() {
 		return index;

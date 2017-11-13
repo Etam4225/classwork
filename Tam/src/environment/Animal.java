@@ -28,6 +28,7 @@ public class Animal {
 		while(trait2.equals(trait1)) {
 			trait2 = new Trait();
 		}
+		this.description = description;
 	}
 	
 	private String getName() {
@@ -46,8 +47,6 @@ public class Animal {
 		}
 		
 	}
-	
-	
 	
 	@Override
 	public String toString() {
