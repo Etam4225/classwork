@@ -16,6 +16,7 @@ public class Trait {
 	
 	public Trait() {
 		index = (int)(Math.random()*traits.length);
+		description = traits[index];
 	}
 
 

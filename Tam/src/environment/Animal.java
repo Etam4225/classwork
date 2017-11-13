@@ -78,8 +78,8 @@ public class Animal {
 		return mated;
 	}
 			
-	public void setMated(boolean mated) {
-		this.mated = mated;
+	public void setMated(boolean b) {
+		this.mated = b;
 	}
 	
 	public void reset() {
