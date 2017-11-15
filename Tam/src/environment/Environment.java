@@ -18,7 +18,7 @@ public class Environment {
 
 	}
 
-	private void growPlants() {
+	public void growPlants() {
 		plants+= growthRate;
 		System.out.println("\nThere are "+plants+" plants.");
 		

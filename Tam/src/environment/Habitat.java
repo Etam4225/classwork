@@ -30,7 +30,7 @@ public class Habitat extends Environment{
 		return s;
 	}
 
-	private void addAnimal(Animal animal) {
+	public void addAnimal(Animal animal) {
 		int i = 0;
 		while(i < animals.length) {
 			if(animals[i] == null) {
@@ -49,5 +49,8 @@ public class Habitat extends Environment{
 		for(int i = 0; i < animals.length; i++) {
 			if(animals[i] == a)animals[i] = null;
 		}
+	}
+	public Animal[] getAnimals() {
+		return animals;
 	}
 }
