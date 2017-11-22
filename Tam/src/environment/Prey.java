@@ -5,7 +5,7 @@ public class Prey extends ReproductionAnimal{
 	public static final String[] PREY = {"bunny"};
 	
 	public static void main(String args) {
-		Wilderness wilderness = new Wilderness("A Wooeded Area", 40);
+		Wilderness wilderness = new Wilderness("A Wooded Area", 40);
 		int numPredators = 10;
 		int numPrey = 25;
 		for(int i = 0; i < numPredators; i++) {
