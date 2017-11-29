@@ -54,15 +54,15 @@ public class Searching {
 	}
 
 	public static int binarySearch(int[] searchThis, int startIndex, int endIndex, int target) {
-		if(searchThis[(endIndex - startIndex)/2] < target) {
-			binarySearch(searchThis, endIndex, endIndex/2, target);
-			
+		int middle = (startIndex + endIndex)/2;
+		if(searchThis[middle] == target) {
+			return middle;
 		}
-		if(searchThis[(endIndex - startIndex)/2] > target) {
-			binarySearch(searchThis, startIndex, endIndex, target);
+		if(searchThis[middle] > target) {
+			return binarySearch(searchThis, startIndex, middle, target);
 		}
-		if(searchThis[(endIndex - startIndex)/2] == target) {
-			return searchThis[(endIndex - startIndex)/2];
+		if(searchThis[middle] < target) {
+			return binarySearch(searchThis, middle , endIndex , target);
 		}
 		return -1;
 	}
